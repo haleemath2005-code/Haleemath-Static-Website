@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choco Bliss | Handmade Chocolates</title>
+  <link rel="icon" href="https://images.unsplash.com/photo-1549007994-cb92caebd54b?q=80&w=1200&auto=format&fit=crop">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --ink: #24150f;
+      --chocolate: #3a2016;
+      --cocoa: #6d3b24;
+      --berry: #a3293d;
+      --cream: #fff7ed;
+      --gold: #d59b43;
+      --soft: #f7efe5;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fffaf4;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    .brand-name {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 700;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      width: 100%;
+      background: rgba(36, 21, 15, 0.96);
+      box-shadow: 0 10px 30px rgba(36, 21, 15, 0.16);
+      backdrop-filter: blur(12px);
+    }
+
+    .navbar {
+      padding: 0.85rem 0;
+    }
+
+    .brand-name {
+      color: #fff;
+      font-size: 1.8rem;
+      text-decoration: none;
+    }
+
+    .brand-name:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+      color: rgba(255, 255, 255, 0.86);
+      font-weight: 500;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .navbar-dark .navbar-nav .nav-link:hover {
+      color: var(--gold);
+    }
+
+    .hero {
+      min-height: 94vh;
+      padding: 8rem 0 4rem;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(36, 21, 15, 0.78), rgba(36, 21, 15, 0.34)),
+        url("https://images.unsplash.com/photo-1511381939415-e44015466834?q=80&w=1600&auto=format&fit=crop") center/cover;
+      color: #fff;
+    }
+
+    .hero-content {
+      max-width: 660px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      color: #ffe0a4;
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .hero h1 {
+      margin-bottom: 1rem;
+      font-size: clamp(2.6rem, 7vw, 5.3rem);
+      line-height: 1;
+    }
+
+    .hero p {
+      max-width: 560px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.8rem;
+    }
+
+    .btn-choco,
+    .btn-outline-cream {
+      border-radius: 999px;
+      padding: 0.8rem 1.35rem;
+      font-weight: 700;
+    }
+
+    .btn-choco {
+      color: #21120d;
+      background: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-choco:hover {
+      color: #21120d;
+      background: #f0bc63;
+      border-color: #f0bc63;
+    }
+
+    .btn-outline-cream {
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+    }
+
+    .btn-outline-cream:hover {
+      color: var(--ink);
+      background: #fff;
+    }
+
+    .section-pad {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      margin-bottom: 0.75rem;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+
+    .section-subtitle {
+      max-width: 630px;
+      margin: 0 auto 2.3rem;
+      color: #6f5b4d;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .choco-card,
+    .product-card {
+      height: 100%;
+      border: 1px solid rgba(58, 32, 22, 0.1);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 18px 45px rgba(58, 32, 22, 0.08);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      overflow: hidden;
+    }
+
+    .choco-card:hover,
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 55px rgba(58, 32, 22, 0.14);
+    }
+
+    .choco-card {
+      padding: 1.7rem;
+      text-align: center;
+    }
+
+    .choco-card i {
+      display: inline-flex;
+      width: 4rem;
+      height: 4rem;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+      border-radius: 50%;
+      color: var(--berry);
+      background: #fff0e1;
+      font-size: 1.8rem;
+    }
+
+    .choco-card h5,
+    .product-card h5 {
+      color: var(--chocolate);
+      font-weight: 700;
+    }
+
+    .choco-card p,
+    .product-card p {
+      color: #6f5b4d;
+      line-height: 1.65;
+    }
+
+    .product-link {
+      display: block;
+      height: 100%;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .product-link:hover {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 285px;
+      object-fit: cover;
+    }
+
+    .product-body {
+      padding: 1.35rem;
+      text-align: center;
+    }
+
+    .price {
+      margin-bottom: 0;
+      color: var(--berry);
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    .soft-band {
+      background: var(--soft);
+    }
+
+    .contact-panel {
+      padding: 2rem;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 22px 50px rgba(58, 32, 22, 0.08);
+    }
+
+    .form-control {
+      height: auto;
+      border-color: #eadaca;
+      border-radius: 8px;
+      padding: 0.8rem 0.95rem;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 0.16rem rgba(213, 155, 67, 0.18);
+    }
+
+    .site-footer {
+      padding: 2rem 0;
+      color: #fff;
+      background: var(--ink);
+      text-align: center;
+    }
+
+    .social-link {
+      display: inline-flex;
+      width: 2.4rem;
+      height: 2.4rem;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0.25rem 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 50%;
+      color: #fff;
+    }
+
+    .social-link:hover {
+      color: var(--ink);
+      background: var(--gold);
+      text-decoration: none;
+    }
+
+    @media (max-width: 767px) {
+      .hero {
+        min-height: 88vh;
+        padding-top: 7rem;
+      }
+
+      .section-pad {
+        padding: 3.6rem 0;
+      }
+
+      .section-title {
+        font-size: 2.1rem;
+      }
+
+      .product-card img {
+        height: 245px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="brand-name" href="#home-section">Choco Bliss</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#home-section">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#ourchocolate-section">Our Chocolates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gift-section">Gift Collection</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact-section">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home-section">
+      <div class="container">
+        <div class="hero-content">
+          <span class="eyebrow"><i class="bi bi-stars"></i> Premium handmade chocolates</span>
+          <h1>Sweet moments, wrapped beautifully.</h1>
+          <p>Discover rich cocoa, silky caramel, creamy truffles, and gift boxes made for birthdays, weddings, celebrations, and small everyday joys.</p>
+          <div class="hero-actions">
+            <a href="#gift-section" class="btn btn-choco">Shop gift boxes</a>
+            <a href="#ourchocolate-section" class="btn btn-outline-cream">Explore flavours</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad soft-band" id="ourchocolate-section">
+      <div class="container">
+        <h2 class="section-title">Our Chocolates</h2>
+        <p class="section-subtitle">A collection of classic flavours crafted for smooth texture, balanced sweetness, and a little bit of celebration in every bite.</p>
+
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="choco-card">
+              <i class="bi bi-moon-stars-fill"></i>
+              <h5>Dark Chocolates</h5>
+              <p>Rich in cocoa and crafted for true chocolate lovers.</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="choco-card">
+              <i class="bi bi-stars"></i>
+              <h5>White Chocolates</h5>
+              <p>Smooth, creamy, and irresistibly sweet.</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="choco-card">
+              <i class="bi bi-droplet-fill"></i>
+              <h5>Caramel Chocolates</h5>
+              <p>A perfect blend of silky chocolate and golden caramel.</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="choco-card">
+              <i class="bi bi-flower1"></i>
+              <h5>Fruit & Nut Chocolates</h5>
+              <p>Crunchy nuts and fruity flavours in every delightful bite.</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="choco-card">
+              <i class="bi bi-gem"></i>
+              <h5>Truffle Chocolates</h5>
+              <p>Luxury handcrafted chocolates with soft, melt-in-mouth centres.</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="choco-card">
+              <i class="bi bi-grid-3x3-gap-fill"></i>
+              <h5>Wafer Chocolates</h5>
+              <p>Crispy layers wrapped in delicious chocolate goodness.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="gift-section">
+      <div class="container">
+        <h2 class="section-title">Gift Collection</h2>
+        <p class="section-subtitle">Choose a ready-made box for your favourite people, or customize a collection with the flavours they love most.</p>
+
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <a class="product-link" href="https://www.cadbury.co.in" target="_blank" rel="noopener">
+              <div class="product-card">
+                <img src="https://i.pinimg.com/736x/f0/8b/f9/f08bf91baca6ab421ec0ad9a7a69566d.jpg" alt="Valentine chocolate gift box">
+                <div class="product-body">
+                  <h5>Valentine Box</h5>
+                  <p>Premium assorted chocolates for special moments.</p>
+                  <p class="price">&#8377;499</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 mb-4">
+            <a class="product-link" href="https://www.cadbury.co.in" target="_blank" rel="noopener">
+              <div class="product-card">
+                <img src="https://i.pinimg.com/736x/dd/08/f2/dd08f28adc22f83b5f3f2a6769a3c562.jpg" alt="Birthday chocolate pack">
+                <div class="product-body">
+                  <h5>Birthday Pack</h5>
+                  <p>Perfect chocolates for birthday celebrations.</p>
+                  <p class="price">&#8377;599</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 mb-4">
+            <a class="product-link" href="https://www.cadbury.co.in" target="_blank" rel="noopener">
+              <div class="product-card">
+                <img src="https://www.arka.com/cdn/shop/files/chocolate-truffles-box.jpg?v=1707158066&width=700" alt="Kids sweet chocolate box">
+                <div class="product-body">
+                  <h5>Kids Sweet Box</h5>
+                  <p>Sweet treats specially made for kids.</p>
+                  <p class="price">&#8377;399</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 mb-4">
+            <a class="product-link" href="https://www.cadbury.co.in" target="_blank" rel="noopener">
+              <div class="product-card">
+                <img src="https://i.pinimg.com/1200x/ba/28/18/ba28187b29d1b01aef288289887b707e.jpg" alt="Premium luxury chocolate hamper">
+                <div class="product-body">
+                  <h5>Premium Luxury Hamper</h5>
+                  <p>Luxury chocolates packed for special occasions.</p>
+                  <p class="price">&#8377;1299</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 mb-4">
+            <a class="product-link" href="https://www.cadbury.co.in" target="_blank" rel="noopener">
+              <div class="product-card">
+                <img src="https://i.pinimg.com/736x/62/32/4f/62324f601cd456e10205c88004e9adab.jpg" alt="Wedding chocolate gift box">
+                <div class="product-body">
+                  <h5>Wedding Gift Box</h5>
+                  <p>Premium chocolates for memorable wedding moments.</p>
+                  <p class="price">&#8377;1499</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 mb-4">
+            <a class="product-link" href="https://www.cadbury.co.in" target="_blank" rel="noopener">
+              <div class="product-card">
+                <img src="https://i.pinimg.com/736x/83/28/d1/8328d1f41030c79f74924073e67c3e67.jpg" alt="Custom chocolate gift box">
+                <div class="product-body">
+                  <h5>Custom Chocolate Box</h5>
+                  <p>Create your own favourite chocolate collection.</p>
+                  <p class="price">&#8377;999</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad soft-band" id="contact-section">
+      <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-subtitle">Planning a celebration or a custom gift? Send a message and we will help you pick the perfect chocolate box.</p>
+
+        <div class="contact-panel">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="customerName">Name</label>
+                <input type="text" class="form-control" id="customerName" placeholder="Your name">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="customerPlace">Place</label>
+                <input type="text" class="form-control" id="customerPlace" placeholder="Your place">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="customerEmail">Email</label>
+                <input type="email" class="form-control" id="customerEmail" placeholder="you@example.com">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="customerMobile">Mobile</label>
+                <input type="tel" class="form-control" id="customerMobile" placeholder="Mobile number">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="customerMessage">Message</label>
+              <textarea class="form-control" id="customerMessage" rows="6" placeholder="Tell us what you are looking for..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-choco btn-block">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a class="social-link" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <p class="mb-0">Copyright &copy; 2026 Choco Bliss. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
